@@ -40,7 +40,7 @@ def doSpecial(*args):
 			cameraMatrix = cameraMatrix*matrices.translate(translateFactor, 0, 0) #left
 		if args[0] == GLUT_KEY_RIGHT:
 			cameraMatrix = cameraMatrix*matrices.translate(-translateFactor, 0, 0) #right
-	if glutGetModifiers() & GLUT_ACTIVE_CTRL:
+	elif glutGetModifiers() & GLUT_ACTIVE_CTRL:
 		if args[0] == GLUT_KEY_UP:
 			cameraMatrix = cameraMatrix*matrices.scale(1/scaleFactor, 1/scaleFactor, 1/scaleFactor)
 		if args[0] == GLUT_KEY_DOWN:
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 	glutInit([])
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
 	glutInitWindowSize(640,480)
-	glutCreateWindow("Simple OpenGL Renderer")
+	glutCreateWindow(b"Simple OpenGL Renderer")
 	glEnable(GL_DEPTH_TEST)      # Ensure farthest polygons render first
 	glEnable(GL_NORMALIZE)       # Prevents scale from affecting color
 	glClearColor(0.1, 0.1, 0.2, 0.0) # Color to apply for glClear()
