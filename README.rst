@@ -80,3 +80,12 @@ the opportunity to define which slots these correspond with at runtime.
 It would be nice to have a nice wxPython GUI, while preserving the ability
 to render from the command line.  Perhaps the command-line could become
 a non-interactive renderer?
+
+TODO Checklist
+==============
+
+- [ ] P0: Material and Textures
+- [ ] P1: Interface for ease of testing
+- [ ] P2: Package manager
+- [ ] P3: ply various attribute handling
+- [ ] P4: Magnification keys not working

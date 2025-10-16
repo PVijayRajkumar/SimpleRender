@@ -25,14 +25,8 @@ translateFactor = 0.05
 def doIdle():    
 	pass    # Remove if we actually use this function
 	
-def doKeyboard(*args):
-	global cameraMatrix
-	if args[0] == '+':
-		cameraMatrix = cameraMatrix*matrices.scale(1/scaleFactor, 1/scaleFactor, 1/scaleFactor)
-	elif args[0] == '-':
-		cameraMatrix = cameraMatrix*matrices.scale(scaleFactor, scaleFactor, scaleFactor)
-	else:
-		return
+def doKeyboard(*args): # Not working
+	pass
 	doRedraw()
 	
 def doSpecial(*args):
@@ -46,6 +40,11 @@ def doSpecial(*args):
 			cameraMatrix = cameraMatrix*matrices.translate(translateFactor, 0, 0) #left
 		if args[0] == GLUT_KEY_RIGHT:
 			cameraMatrix = cameraMatrix*matrices.translate(-translateFactor, 0, 0) #right
+	if glutGetModifiers() & GLUT_ACTIVE_CTRL:
+		if args[0] == GLUT_KEY_UP:
+			cameraMatrix = cameraMatrix*matrices.scale(1/scaleFactor, 1/scaleFactor, 1/scaleFactor)
+		if args[0] == GLUT_KEY_DOWN:
+			cameraMatrix = cameraMatrix*matrices.scale(scaleFactor, scaleFactor, scaleFactor)
 	else:
 		if args[0] == GLUT_KEY_UP:
 			cameraMatrix = cameraMatrix*matrices.rotateX(-rotateFactor) #up
@@ -131,4 +130,3 @@ if __name__ == '__main__':
 	# Runs the GUI - never exits
 	# Repeatedly calls doRedraw(), doIdle(), & doReshape()
 	glutMainLoop()
-
